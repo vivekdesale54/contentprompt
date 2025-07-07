@@ -16,7 +16,7 @@ export default function TransformedContent() {
           <div className="flex justify-between items-center mb-3">
             <div className="flex items-center gap-2">
               <img
-                src="/icons/linkedin.svg"
+                src="icons8-linkedin-50.png"
                 alt="LinkedIn"
                 className="w-5 h-5"
               />
@@ -44,7 +44,7 @@ export default function TransformedContent() {
           <div className="flex justify-between items-center mb-3">
             <div className="flex items-center gap-2">
               <img
-                src="/icons/instagram.svg"
+                src="Instagram_logo_2016.svg-removebg-preview.png"
                 alt="Instagram"
                 className="w-5 h-5"
               />
@@ -67,7 +67,7 @@ export default function TransformedContent() {
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
           <div className="flex justify-between items-center mb-3">
             <div className="flex items-center gap-2">
-              <img src="/icons/twitter.svg" alt="Twitter" className="w-5 h-5" />
+              <img src="twittersvg-logo-2.svg" alt="Twitter" className="w-5 h-5" />
               <h3 className="text-xl font-semibold text-gray-800">Twitter</h3>
             </div>
             <span className="text-xs font-medium bg-gray-100 text-gray-600 px-3 py-1 rounded-full">

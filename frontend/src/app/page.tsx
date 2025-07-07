@@ -4,21 +4,69 @@ import CallToAction from './components/calltoaction';
 import Footer from './components/footer';
 import { useEffect, useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
+import TransformedContentSocial from './components/Transformcontent'
 
 export default function HeroSection() {
   const [inputPrompt, setInputPrompt] = useState('');
+  const [topic, setTopic] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const [generatedContent, setGeneratedContent] = useState({
+  linkedin: '',
+  instagram: '',
+  twitter: '',
+});
   const ai = new GoogleGenAI({
     apiKey: process.env.NEXT_PUBLIC_GEMINI || 'no_api_key',
   });
 
   async function generateContent(prompt: string) {
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: `Generate short viral content for LinkedIn, Instagram, and Twitter based on the following idea: ${prompt}. Give the result in clean JSON format with keys: linkedin, instagram, and twitter. Each should have 1–2 lines of platform-optimized content.`,
+  setLoading(true);
+  try {
+    const result = await ai.models.generateContent({
+      model: 'gemini-1.5-flash',
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            {
+              text: `Generate short viral content for LinkedIn, Instagram, and Twitter based on this idea: "${prompt}". 
+        Give the result in clean JSON format like:
+        {
+          "linkedin": "LinkedIn content...",
+          "instagram": "Instagram content...",
+          "twitter": "Twitter content..."
+        }`
+            }
+          ]
+        }
+      ]
     });
-    console.log(response.text);
+
+    console.log("Full Gemini response:", result);
+
+    const textOutput = result.candidates?.[0]?.content?.parts
+      ?.map((p) => (typeof p === 'object' && 'text' in p ? p.text : ''))
+      .join('\n');
+
+    console.log("Extracted rawText:", textOutput);
+
+    if (!textOutput) throw new Error("No text found in Gemini response.");
+
+    const jsonMatch = textOutput.match(/{[\s\S]+}/);
+    if (jsonMatch) {
+      const parsed = JSON.parse(jsonMatch[0]);
+      setGeneratedContent(parsed); 
+    } else {
+      console.warn('No valid JSON found in Gemini output.');
+    }
+
+  } catch (error) {
+    console.error('Error generating content:', error);
   }
 
+  setLoading(false);
+}
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white to-[#f5faff] px-4 text-center">
       <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight max-w-3xl mt-[10vh]">
@@ -35,7 +83,7 @@ export default function HeroSection() {
         Twitter with AI-powered optimization.
       </p>
 
-      <div className="mt-8 flex w-full max-w-xl">
+      <div className="flex mt-8 w-full max-w-xl">
         <input
           onChange={(e) => {
             setInputPrompt(e.target.value);
@@ -46,12 +94,15 @@ export default function HeroSection() {
         />
         <button
           onClick={() => {
-            generateContent(inputPrompt);
+           generateContent(inputPrompt);
           }}
-          className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-medium rounded-r-xl hover:from-indigo-600 hover:to-violet-600 transition-all"
+          className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-medium rounded-r-xl hover:from-indigo-600 hover:to-violet-600 transition-all disabled={loading}"
         >
           Repurpose Content →
         </button>
+      </div>
+      <div className='text-black'>
+        <TransformedContentSocial content={generatedContent} />
       </div>
       <div>
         <TransformedContent />
