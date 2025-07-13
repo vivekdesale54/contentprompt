@@ -5,10 +5,11 @@ import Footer from './components/footer';
 import { useEffect, useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
 import TransformedContentSocial from './components/Transformcontent'
+import { examplePrompt } from './lib/examples';
+
 
 export default function HeroSection() {
   const [inputPrompt, setInputPrompt] = useState('');
-  const [topic, setTopic] = useState('');
   const [loading, setLoading] = useState(false);
 
   const [generatedContent, setGeneratedContent] = useState({
@@ -23,21 +24,15 @@ export default function HeroSection() {
   async function generateContent(prompt: string) {
   setLoading(true);
   try {
+    const fullPrompt = examplePrompt.replace('{{USER_INPUT}}', prompt);
+
     const result = await ai.models.generateContent({
       model: 'gemini-1.5-flash',
       contents: [
         {
           role: 'user',
           parts: [
-            {
-              text: `Generate short viral content for LinkedIn, Instagram, and Twitter based on this idea: "${prompt}". 
-        Give the result in clean JSON format like:
-        {
-          "linkedin": "LinkedIn content...",
-          "instagram": "Instagram content...",
-          "twitter": "Twitter content..."
-        }`
-            }
+            { text: fullPrompt }
           ]
         }
       ]
