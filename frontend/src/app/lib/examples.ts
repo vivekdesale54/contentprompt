@@ -31,12 +31,142 @@ Idea: "Why most content never goes viral"
 }
 
 Example 4: 
-  "idea": "My first viral post",
-    {
-    "linkedin": "My first viral post wasn’t my best post. It was my **most honest**. I stopped writing to impress — and started writing to connect. That’s when it took off 🚀",
-    "instagram": "This post hit 100K views. But it was never meant to. I wrote it at 2AM with no filter. It came from the heart — and it resonated. 🔥",
-    "twitter": "My first viral post wasn’t perfect. It was vulnerable. Real. Slightly messy. But it felt *human*. That’s what people shared."
-  }
+Idea: "My first viral post",
+{
+"linkedin": "My first viral post wasn’t my best post. It was my **most honest**. I stopped writing to impress — and started writing to connect. That’s when it took off 🚀",
+"instagram": "This post hit 100K views. But it was never meant to. I wrote it at 2AM with no filter. It came from the heart — and it resonated. 🔥",
+"twitter": "My first viral post wasn’t perfect. It was vulnerable. Real. Slightly messy. But it felt *human*. That’s what people shared."
+}
+
+Example 5:
+Idea: "How to Build a Startup"
+{
+"linkedin": "1️⃣ Build a Prototype
+Facebook didn’t launch the perfect product. They tested, learned & iterated.
+Create the smallest version that solves the core problem
+Progress > Perfect
+
+2️⃣ Experience a Problem Firsthand
+The best way to build a durable business:
+Understanding your customers so well you can Predict their needs & desires.
+Live those needs yourself.
+
+3️⃣ Validate the Opportunity
+Use the “Why now?” framework to identify the most promising startup.
+Look for ideas with strong “market pull”
+– People eagerly waiting to buy.
+A good idea at the wrong time is a bad idea.
+
+4️⃣ Upgrade Your Team
+As your startup evolves, so should your team.
+Hire A-players who are ready to solve the challenges you’re facing.
+The top team will win the big leagues.
+
+5️⃣ Embrace Deep Work
+Deep work is your time to work in your zone of genius – completely undistracted.
+No meetings, no calls, no scrolling.
+Just you and your work.
+
+6️⃣ Hire a Chief of Staff
+Delegating effectively is Key to unlocking genius-level work
+They’ll handle operations, communication & special projects.
+Without a coach, you can’t win the game.
+
+7️⃣ Maximize User Happiness
+Your product is only as good as how much people love using it.
+Obsessively track your Net Promoter Score (NPS) and product “stickiness”
+Happy users are your greatest growth path.
+
+8️⃣ Scale Your Company
+Build your Founder Flywheel.
+Founders want every action to multiply the last. With a flywheel your business will scale itself.
+Founders embrace compounding."
+
+"instagram": "1️⃣ Build a Prototype
+Facebook didn’t launch the perfect product. They tested, learned & iterated.
+Create the smallest version that solves the core problem
+Progress > Perfect
+
+2️⃣ Experience a Problem Firsthand
+The best way to build a durable business:
+Understanding your customers so well you can Predict their needs & desires.
+Live those needs yourself.
+
+3️⃣ Validate the Opportunity
+Use the “Why now?” framework to identify the most promising startup.
+Look for ideas with strong “market pull”
+– People eagerly waiting to buy.
+A good idea at the wrong time is a bad idea.
+
+4️⃣ Upgrade Your Team
+As your startup evolves, so should your team.
+Hire A-players who are ready to solve the challenges you’re facing.
+The top team will win the big leagues.
+
+5️⃣ Embrace Deep Work
+Deep work is your time to work in your zone of genius – completely undistracted.
+No meetings, no calls, no scrolling.
+Just you and your work.
+
+6️⃣ Hire a Chief of Staff
+Delegating effectively is Key to unlocking genius-level work
+They’ll handle operations, communication & special projects.
+Without a coach, you can’t win the game.
+
+7️⃣ Maximize User Happiness
+Your product is only as good as how much people love using it.
+Obsessively track your Net Promoter Score (NPS) and product “stickiness”
+Happy users are your greatest growth path.
+
+8️⃣ Scale Your Company
+Build your Founder Flywheel.
+Founders want every action to multiply the last. With a flywheel your business will scale itself.
+Founders embrace compounding."
+
+"twitter": "A business without a central system will crumble under pressure.
+
+1️⃣ Build a Prototype
+Facebook didn’t launch the perfect product. They tested, learned & iterated.
+Create the smallest version that solves the core problem
+Progress > Perfect
+
+2️⃣ Experience a Problem Firsthand
+The best way to build a durable business:
+Understanding your customers so well you can Predict their needs & desires.
+Live those needs yourself.
+
+3️⃣ Validate the Opportunity
+Use the “Why now?” framework to identify the most promising startup.
+Look for ideas with strong “market pull”
+– People eagerly waiting to buy.
+A good idea at the wrong time is a bad idea.
+
+4️⃣ Upgrade Your Team
+As your startup evolves, so should your team.
+Hire A-players who are ready to solve the challenges you’re facing.
+The top team will win the big leagues.
+
+5️⃣ Embrace Deep Work
+Deep work is your time to work in your zone of genius – completely undistracted.
+No meetings, no calls, no scrolling.
+Just you and your work.
+
+6️⃣ Hire a Chief of Staff
+Delegating effectively is Key to unlocking genius-level work
+They’ll handle operations, communication & special projects.
+Without a coach, you can’t win the game.
+
+7️⃣ Maximize User Happiness
+Your product is only as good as how much people love using it.
+Obsessively track your Net Promoter Score (NPS) and product “stickiness”
+Happy users are your greatest growth path.
+
+8️⃣ Scale Your Company
+Build your Founder Flywheel.
+Founders want every action to multiply the last. With a flywheel your business will scale itself.
+Founders embrace compounding.
+
+}
 Now based on this idea: "{{USER_INPUT}}", write similar viral-style content for:
 - LinkedIn
 - Instagram
