@@ -15,7 +15,7 @@ const  TransformedContentSocial = ({ content }: ContentProps) => {
           <h3 className="font-semibold">LinkedIn:</h3>
           <p className="bg-gray-100 p-3 rounded">{content.linkedin}</p>
         </div>
-      )}
+      )};
       {content.instagram && (
         <div>
           <h3 className="font-semibold">Instagram:</h3>

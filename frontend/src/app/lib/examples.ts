@@ -167,6 +167,8 @@ Founders want every action to multiply the last. With a flywheel your business w
 Founders embrace compounding.
 
 }
+
+
 Now based on this idea: "{{USER_INPUT}}", write similar viral-style content for:
 - LinkedIn
 - Instagram
