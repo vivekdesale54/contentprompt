@@ -1,17 +1,20 @@
-import { supabase } from '../../lib/supabaseClient'
-import { redirect } from 'next/navigation'
+'use client';
 
-export default async function Dashboard() {
-  const { data: { session } } = await supabase.auth.getSession()
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../../context/authContext';
 
-  if (!session) {
-    redirect('/auth')
-  }
+export default function DashboardPage() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
 
-  return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Welcome to your dashboard</h1>
-      <p>User: {session.user.email}</p>
-    </div>
-  )
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/auth'); // redirect to login/signup page
+    }
+  }, [user, loading, router]);
+
+  if (loading) return <p>Loading...</p>;
+
+  return <div>Welcome to dashboard, {user.email}!</div>;
 }
