@@ -9,22 +9,22 @@ export default function AuthPage() {
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
-  const supabase = createClientComponentClient();
-    const [supabase, setSupabase] = useState(null);
 
+  // ✅ Initialize client
+  const supabase = createClientComponentClient({
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  });
 
   const handleAuth = async () => {
     try {
-      let response;
       if (isLogin) {
-        // Login
         const { error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
         if (error) throw error;
       } else {
-        // Sign Up
         const { error } = await supabase.auth.signUp({
           email,
           password,
@@ -40,7 +40,6 @@ export default function AuthPage() {
 
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center p-20">
-      ``
       <h1 className="text-black">{isLogin ? 'Login' : 'Register'}</h1>
       <input
         type="email"
