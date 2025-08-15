@@ -10,6 +10,8 @@ export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
   const supabase = createClientComponentClient();
+    const [supabase, setSupabase] = useState(null);
+
 
   const handleAuth = async () => {
     try {
