@@ -1,14 +1,19 @@
 'use client';
+import { supabase } from '../supabase-client';
+import { useRouter } from 'next/navigation';
 
-import ProtectedPage from '../ProtectedPage';
-import { useAuth } from '../context/authContext';
+export default function Dashboard() {
+  const router = useRouter();
 
-export default function DashboardPage() {
-  const { user } = useAuth();
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+  };
 
   return (
-    <ProtectedPage>
-      <h1>Welcome, {user?.email}!</h1>
-    </ProtectedPage>
+    <div>
+      <h1>Dashboard</h1>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
   );
 }
