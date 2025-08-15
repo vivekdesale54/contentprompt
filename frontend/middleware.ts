@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { supabase } from './src/app/lib/supabaseClient'
+import { supabase } from './src/app/supabase-client';
 
 export async function middleware(req: NextRequest) {
   const { data: { session } } = await supabase.auth.getSession()

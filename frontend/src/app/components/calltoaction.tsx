@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../supabase-client';
 import { GoogleGenAI } from '@google/genai';
+import { error } from 'console';
+
 ('use Client');
 
 const CallToAction = () => {
   const [user, setUser] = useState<any>(null);
-
   // Check if user is logged in
+
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user);

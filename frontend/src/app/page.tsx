@@ -5,7 +5,7 @@ import Footer from './components/footer';
 import { useEffect, useState } from 'react';
 import TransformedContentSocial from './components/Transformcontent';
 import { examplePrompt } from './lib/examples';
-import { supabase } from './lib/supabaseClient';
+import { supabase } from '../app/supabase-client';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export default function HeroSection() {

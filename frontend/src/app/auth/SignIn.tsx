@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../supabase-client';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -20,21 +20,33 @@ export default function SignIn() {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Sign In</button>
-      <p>{message}</p>
-    </form>
+    <div className="bg-white min-h-screen flex itmes-center justify-center">
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col gap-4 items-center text-center"
+      >
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="mt-2 border border-gray-200 px-4 py-2 rounded-xl"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="mt-2 border border-gray-200 px-4 py-2 rounded-xl"
+        />
+        <button
+          type="submit"
+          className=" border border-black-200 hover:bg-gray-200 px-4 py-2 rounded-2xl"
+        >
+          Sign In
+        </button>
+        <p>{message}</p>
+      </form>
+    </div>
   );
 }

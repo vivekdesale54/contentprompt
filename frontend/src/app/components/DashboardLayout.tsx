@@ -1,32 +1,47 @@
-// components/DashboardLayout.tsx
-import { ReactNode } from "react";
-import Link from "next/link";
+'use client';
 
-interface DashboardLayoutProps {
-  children: ReactNode;
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+interface User {
+  email: string;
+  // add other fields if your user object has more
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-lg p-6">
-        <h2 className="text-2xl font-bold mb-8 text-blue-600">MyApp</h2>
-        <nav className="flex flex-col gap-4 text-gray-700">
-          <Link href="/dashboard" className="hover:text-blue-500 transition">
-            🏠 Overview
-          </Link>
-          <Link href="/dashboard/tools" className="hover:text-blue-500 transition">
-            🛠 Tools
-          </Link>
-          <Link href="/dashboard/settings" className="hover:text-blue-500 transition">
-            ⚙ Settings
-          </Link>
-        </nav>
-      </aside>
+export default function DashboardPage() {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-      {/* Main Content */}
-      <main className="flex-1 p-8">{children}</main>
-    </div>
-  );
+  useEffect(() => {
+    async function checkSession() {
+      try {
+        const res = await fetch('/api/auth/session', {
+          credentials: 'include',
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user || null);
+        } else {
+          setUser(null);
+        }
+      } catch {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+    checkSession();
+  }, []);
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/auth');
+    }
+  }, [loading, user, router]);
+
+  if (loading) return <p>Loading...</p>;
+  if (!user) return null;
+
+  return <div>Welcome to dashboard, {user.email}!</div>;
 }
