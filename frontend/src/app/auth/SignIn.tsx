@@ -41,7 +41,7 @@ export default function SignIn() {
         />
         <button
           type="submit"
-          className=" border border-black-200 hover:bg-gray-200 px-4 py-2 rounded-2xl"
+          className=" border border-black-200 hover:bg-gray-200 px-6 py-4 rounded-2xl"
         >
           Sign In
         </button>

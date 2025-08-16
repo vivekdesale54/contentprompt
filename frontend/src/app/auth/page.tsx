@@ -7,7 +7,8 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 export default function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(true);
+
   const router = useRouter();
 
   // ✅ Initialize client
@@ -18,7 +19,7 @@ export default function AuthPage() {
 
   const handleAuth = async () => {
     try {
-      if (isLogin) {
+      if (isSignIn) {
         const { error } = await supabase.auth.signInWithPassword({
           email,
           password,
@@ -40,7 +41,7 @@ export default function AuthPage() {
 
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center p-20">
-      <h1 className="text-black">{isLogin ? 'Login' : 'Register'}</h1>
+      <h1 className="text-black">{isSignIn ? 'Login' : 'Register'}</h1>
       <input
         type="email"
         placeholder="Email"
@@ -58,19 +59,19 @@ export default function AuthPage() {
       />
       <br />
       <button
-        className="text-black px-4 py-2 border border-gray-500 rounded-2xl hover:bg-gray-200"
+        className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white px-8 py-2 border border-gray-500 rounded-2xl"
         onClick={handleAuth}
       >
-        {isLogin ? 'Login' : 'Sign Up'}
+        {isSignIn ? 'Sign In  ✨' : 'Sign Up ✨'}
       </button>
       <p
         className="mt-4"
-        onClick={() => setIsLogin(!isLogin)}
+        onClick={() => setIsSignIn(!isSignIn)}
         style={{ cursor: 'pointer', color: 'blue' }}
       >
-        {isLogin
+        {isSignIn
           ? "Don't have an account? Sign up"
-          : 'Already have an account? Login'}
+          : 'Already have an account? Sign in'}
       </p>
     </div>
   );
